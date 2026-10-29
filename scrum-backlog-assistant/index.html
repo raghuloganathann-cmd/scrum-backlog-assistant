@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scrum Backlog Assistant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Scrum Backlog Assistant</h1>
+  <p class="sub">Capture stories, plan the sprint, and get quick checks on what to fix before planning.</p>
+
+  <section class="panel stats" aria-label="Sprint summary">
+    <div class="stat"><b id="sCommit">0</b><span>points committed</span></div>
+    <div class="stat"><b id="sDone">0</b><span>points done</span></div>
+    <div class="stat"><b id="sBacklog">0</b><span>points in backlog</span></div>
+    <div class="meter">
+      <label for="cap">Sprint capacity (points)</label>
+      <input id="cap" type="number" min="1" value="20" style="max-width:110px">
+      <div class="bar" id="capBar"><i></i></div>
+    </div>
+  </section>
+
+  <section class="panel" aria-label="Add story">
+    <div class="form">
+      <div class="wide"><label for="title">Story</label><input id="title" placeholder="As a shopper, I want to save my cart, so that I can finish later"></div>
+      <div><label for="pts">Points</label>
+        <select id="pts"><option>1</option><option>2</option><option selected>3</option><option>5</option><option>8</option><option>13</option></select></div>
+      <div><label for="val">Value (1–5)</label>
+        <select id="val"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+      <button class="primary" id="add">Add story</button>
+    </div>
+  </section>
+
+  <div class="layout">
+    <section class="board" aria-label="Board">
+      <div class="col" data-s="backlog"><h2>Backlog <span></span></h2><div class="list"></div></div>
+      <div class="col" data-s="sprint"><h2>Sprint <span></span></h2><div class="list"></div></div>
+      <div class="col" data-s="done"><h2>Done <span></span></h2><div class="list"></div></div>
+    </section>
+
+    <aside class="panel" aria-label="Assistant">
+      <h2>Assistant checks</h2>
+      <div id="tips" style="margin-top:10px"></div>
+      <div class="tools">
+        <button id="sort">Order backlog by value per point</button>
+        <button id="clear">Clear done</button>
+        <button id="demo">Load sample stories</button>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
